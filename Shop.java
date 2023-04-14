@@ -13,7 +13,9 @@ public class Shop {
 
         ArrayList<Double> carrinho = new ArrayList<>();
 
-        while (true) {
+        int finalizador = 0;
+
+        while (finalizador != 1) {
             System.out.println("Para continuar digite a opção desejada:");
             System.out.println("1 - Listar produtos");
             System.out.println("2 - Adicionar ao carrinho");
@@ -22,6 +24,7 @@ public class Shop {
             System.out.println("5 - Sair");
             System.out.print("Opção: ");
             int opcao = lerTeclado.nextInt();
+            double somaFinal = 0;
             if (opcao == 5) {
                 break;
             } else {
@@ -32,7 +35,6 @@ public class Shop {
                         System.out.println("1 - ZOTAC RTX 2060 6GB - R$ 2.500,00 ");
                         System.out.println("2 - ZOTAC RTX 3060 Ti 8GB - R$ 3.282,34");
                         System.out.println("3 - ZOTAC RTX 4070 Ti 12GB - R$ 8.235,28");
-                        System.out.println(listaProdutos);
                         break;
 
                     case 2:
@@ -48,8 +50,12 @@ public class Shop {
                         break;
 
                     case 4:
-                        // Corrigir a quebra do Switch e descobrir metodo de somar uma lista inteira
-                        opcao = 5;
+                        for(int n = 0; n < carrinho.size(); n++) {
+                            somaFinal = somaFinal + carrinho.get(n);
+                        }
+                        System.out.printf("O total de sua compra é de R$ %.2f \n", somaFinal);
+                        System.out.println("Agradeçemos sua compra, volte sempre!");
+                        finalizador = 1;
                         break;
 
                     default:
